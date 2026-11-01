@@ -19,7 +19,7 @@ window.MESS_MENU_DATA = {
             "breakfast": {
               "mealKey": "breakfast",
               "name": "Breakfast",
-              "timing": "07:30 AM to 09:30 AM",
+              "timing": "08:00 AM – 10:00 AM",
               "timingStatus": "verified",
               "categories": [
                 {
@@ -64,7 +64,7 @@ window.MESS_MENU_DATA = {
             "lunch": {
               "mealKey": "lunch",
               "name": "Lunch",
-              "timing": "11:30 AM to 03:00 PM",
+              "timing": "12:30 PM – 03:00 PM",
               "timingStatus": "verified",
               "categories": [
                 {
@@ -101,7 +101,7 @@ window.MESS_MENU_DATA = {
             "snacks": {
               "mealKey": "snacks",
               "name": "Evening Snacks",
-              "timing": "05:00 PM to 06:30 PM",
+              "timing": "05:00 PM – 06:30 PM",
               "timingStatus": "verified",
               "categories": [
                 {
@@ -128,7 +128,7 @@ window.MESS_MENU_DATA = {
             "dinner": {
               "mealKey": "dinner",
               "name": "Dinner",
-              "timing": "07:30 PM to 09:30 PM",
+              "timing": "07:30 PM – 09:30 PM",
               "timingStatus": "verified",
               "categories": [
                 {
@@ -148,10 +148,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Fryums",
+                    "Fryums"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Gulab Jamun"
                   ]
                 }
@@ -301,10 +306,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti & Missi Roti",
-                    "Green Salad",
+                    "Green Salad"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Semiya Kheer"
                   ]
                 }
@@ -448,10 +458,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Green Salad",
+                    "Green Salad"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Besan Burfi"
                   ]
                 }
@@ -602,10 +617,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti / Litti",
-                    "Fryums",
+                    "Fryums"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Rasgulla"
                   ]
                 }
@@ -749,10 +769,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Green Salad",
+                    "Green Salad"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Moong Dal Halwa / Ice Cream"
                   ]
                 }
@@ -908,10 +933,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti & Ajwain Roti",
-                    "Fryums",
+                    "Fryums"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Balushahi"
                   ]
                 }
@@ -1056,10 +1086,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Green Salad",
+                    "Green Salad"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Kheer"
                   ]
                 }
@@ -1081,7 +1116,7 @@ window.MESS_MENU_DATA = {
             "breakfast": {
               "mealKey": "breakfast",
               "name": "Breakfast",
-              "timing": "07:30 AM to 09:30 AM",
+              "timing": "08:00 AM – 10:00 AM",
               "timingStatus": "verified",
               "categories": [
                 {
@@ -1126,7 +1161,7 @@ window.MESS_MENU_DATA = {
             "lunch": {
               "mealKey": "lunch",
               "name": "Lunch",
-              "timing": "11:30 AM to 03:00 PM",
+              "timing": "12:30 PM – 03:00 PM",
               "timingStatus": "verified",
               "categories": [
                 {
@@ -1163,7 +1198,7 @@ window.MESS_MENU_DATA = {
             "snacks": {
               "mealKey": "snacks",
               "name": "Evening Snacks",
-              "timing": "05:00 PM to 06:30 PM",
+              "timing": "05:00 PM – 06:30 PM",
               "timingStatus": "verified",
               "categories": [
                 {
@@ -1190,7 +1225,7 @@ window.MESS_MENU_DATA = {
             "dinner": {
               "mealKey": "dinner",
               "name": "Dinner",
-              "timing": "07:30 PM to 09:30 PM",
+              "timing": "07:30 PM – 09:30 PM",
               "timingStatus": "verified",
               "categories": [
                 {
@@ -1210,10 +1245,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Fryums",
+                    "Fryums"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Suji Halwa"
                   ]
                 }
@@ -1369,10 +1409,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Green Salad",
+                    "Green Salad"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Coconut Laddu"
                   ]
                 }
@@ -1516,10 +1561,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti and Spinach Roti",
-                    "Fryums",
+                    "Fryums"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Gulab Jamun"
                   ]
                 }
@@ -1669,10 +1719,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Green Salad",
+                    "Green Salad"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Besan Burfi"
                   ]
                 }
@@ -1823,10 +1878,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Green Salad",
+                    "Green Salad"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Boondi Laddu"
                   ]
                 }
@@ -1970,10 +2030,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti and Ajwain Roti",
-                    "Green Salad",
+                    "Green Salad"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Gajar Ka Halwa / Ice Cream"
                   ]
                 }
@@ -2118,10 +2183,15 @@ window.MESS_MENU_DATA = {
                   ]
                 },
                 {
-                  "category": "BREADS, SALAD & DESSERTS",
+                  "category": "BREAD & SALAD",
                   "items": [
                     "Roti",
-                    "Fryums",
+                    "Fryums"
+                  ]
+                },
+                {
+                  "category": "DESSERT",
+                  "items": [
                     "Fruit Custard"
                   ]
                 }

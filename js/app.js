@@ -8,9 +8,10 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initDynamicGreeting();
-  initMessMenu();
-  initSettingsAndDrawer();
+  try { initDynamicGreeting(); } catch (e) { console.error('Greeting init error:', e); }
+  try { initMessMenu(); } catch (e) { console.error('Mess menu init error:', e); }
+  try { initSettingsAndDrawer(); } catch (e) { console.error('Settings init error:', e); }
+  try { initBackButton(); } catch (e) { console.error('Back button init error:', e); }
 });
 
 /* ==========================================================================
@@ -52,31 +53,40 @@ function initMessMenu() {
   let currentAnchorDate = new Date(today);
   let selectedDate = new Date(today);
 
-  // Determine current active meal key based on local time
-  function getCurrentActiveMealKey() {
-    const now = new Date();
+  // Determine current active meal key based on local time and verified schedule
+  function getCurrentActiveMealKey(dateToCheck) {
+    const now = dateToCheck || new Date();
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const totalMinutes = hours * 60 + minutes;
+    const isSunday = (now.getDay() === 0);
 
-    // Breakfast: 07:00 to 10:30 (420 to 630 mins)
-    if (totalMinutes >= 420 && totalMinutes < 630) {
-      return 'breakfast';
+    // Verified Serving Time Windows:
+    // Regular Days (Mon - Sat):
+    //   Breakfast: 07:30 AM to 09:30 AM (450 to 570 mins)
+    //   Lunch:     11:30 AM to 03:00 PM (690 to 900 mins)
+    //   Snacks:    05:00 PM to 06:30 PM (1020 to 1110 mins)
+    //   Dinner:    07:30 PM to 09:30 PM (1170 to 1290 mins)
+    //
+    // Sundays:
+    //   Breakfast: 08:00 AM to 10:00 AM (480 to 600 mins)
+    //   Lunch:     12:30 PM to 03:00 PM (750 to 900 mins)
+    //   Snacks:    05:00 PM to 06:30 PM (1020 to 1110 mins)
+    //   Dinner:    07:30 PM to 09:30 PM (1170 to 1290 mins)
+
+    if (isSunday) {
+      if (totalMinutes >= 480 && totalMinutes <= 600) return 'breakfast';
+      if (totalMinutes >= 750 && totalMinutes <= 900) return 'lunch';
+    } else {
+      if (totalMinutes >= 450 && totalMinutes <= 570) return 'breakfast';
+      if (totalMinutes >= 690 && totalMinutes <= 900) return 'lunch';
     }
-    // Lunch: 10:30 to 16:00 (630 to 960 mins)
-    if (totalMinutes >= 630 && totalMinutes < 960) {
-      return 'lunch';
-    }
-    // Snacks: 16:00 to 18:45 (960 to 1125 mins)
-    if (totalMinutes >= 960 && totalMinutes < 1125) {
-      return 'snacks';
-    }
-    // Dinner: 18:45 to 22:30 (1125 to 1350 mins)
-    if (totalMinutes >= 1125 && totalMinutes < 1350) {
-      return 'dinner';
-    }
-    // Night hours: upcoming breakfast
-    return 'breakfast';
+
+    if (totalMinutes >= 1020 && totalMinutes <= 1110) return 'snacks';
+    if (totalMinutes >= 1170 && totalMinutes <= 1290) return 'dinner';
+
+    // Strictly null outside verified serving windows (e.g. 07:00 AM, 03:30 PM, 10:00 PM, 02:00 AM)
+    return null;
   }
 
   // Helper to format date as "11 NOV", "01 NOV", etc.
@@ -227,12 +237,6 @@ function initMessMenu() {
     });
   }
 
-  // Check URL params for direct menu landing
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('tab') === 'menu' && tabMenuBtn) {
-    tabMenuBtn.click();
-  }
-
   // Render the 4 meal cards
   function renderMenuCards() {
     // 14-day loop anchored to Nov 1, 2026 (Sunday Day 8 = Week 2)
@@ -260,6 +264,24 @@ function initMessMenu() {
     const currentActiveMeal = getCurrentActiveMealKey();
     const isToday = isSameDay(selectedDate, today);
 
+    // Dynamic verified timings: Sunday timings on Sundays, regular timings on Mon-Sat
+    const isSelectedSunday = (selectedDate.getDay() === 0);
+    const mealTimings = {
+      regular: {
+        breakfast: '07:30 AM – 09:30 AM',
+        lunch: '11:30 AM – 03:00 PM',
+        snacks: '05:00 PM – 06:30 PM',
+        dinner: '07:30 PM – 09:30 PM'
+      },
+      sunday: {
+        breakfast: '08:00 AM – 10:00 AM',
+        lunch: '12:30 PM – 03:00 PM',
+        snacks: '05:00 PM – 06:30 PM',
+        dinner: '07:30 PM – 09:30 PM'
+      }
+    };
+    const activeTimings = isSelectedSunday ? mealTimings.sunday : mealTimings.regular;
+
     menuContainer.innerHTML = '';
 
     const mealKeys = ['breakfast', 'lunch', 'snacks', 'dinner'];
@@ -277,6 +299,7 @@ function initMessMenu() {
       const isMealActiveNow = isToday && (mKey === currentActiveMeal);
 
       const card = document.createElement('article');
+      card.id = `meal-card-${mKey}`;
       card.className = `meal-card ${isMealActiveNow ? 'current-active-meal' : ''}`;
 
       let rowsHtml = '';
@@ -285,11 +308,12 @@ function initMessMenu() {
         if (row.accompaniment) {
           accHtml = `<span class="accompaniment-pill">+ ${escapeHtml(row.accompaniment)}</span>`;
         }
+        const isDessert = row.category.toUpperCase().includes('DESSERT');
         rowsHtml += `
-          <div class="food-row">
-            <span class="category-label">${escapeHtml(row.category)}</span>
-            <div class="items-content">
-              <span>${escapeHtml(row.items.join(', '))}</span>
+          <div class="food-row ${isDessert ? 'food-row-dessert' : ''}">
+            <span class="category-label ${isDessert ? 'category-label-dessert' : ''}">${isDessert ? '🍨 ' : ''}${escapeHtml(row.category)}</span>
+            <div class="items-content ${isDessert ? 'dessert-items-content' : ''}">
+              <span class="${isDessert ? 'dessert-item-name' : ''}">${escapeHtml(row.items.join(', '))}</span>
               ${accHtml}
             </div>
           </div>
@@ -304,7 +328,7 @@ function initMessMenu() {
           </div>
           <div>
             <h3 class="meal-card-title">${meal.name}</h3>
-            <p class="meal-card-timing">${meal.timing}</p>
+            <p class="meal-card-timing">${activeTimings[mKey] || meal.timing}</p>
           </div>
         </div>
         <div class="meal-food-rows">
@@ -314,6 +338,54 @@ function initMessMenu() {
 
       menuContainer.appendChild(card);
     });
+  }
+
+  // Handle direct clicks on timing cards in Tab 1 to jump directly to dedicated menu card in Tab 2
+  const timingCards = document.querySelectorAll('.timing-item-card[data-meal-target]');
+  timingCards.forEach((tCard) => {
+    const handleMealJump = () => {
+      const mealTarget = tCard.getAttribute('data-meal-target');
+      if (!mealTarget) return;
+
+      if (tabMenuBtn) {
+        tabMenuBtn.click();
+      }
+
+      setTimeout(() => {
+        const targetElement = document.getElementById(`meal-card-${mealTarget}`);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          targetElement.classList.add('meal-card-targeted');
+          setTimeout(() => {
+            targetElement.classList.remove('meal-card-targeted');
+          }, 2000);
+        }
+      }, 120);
+    };
+
+    tCard.addEventListener('click', handleMealJump);
+    tCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleMealJump();
+      }
+    });
+  });
+
+  // Check URL params for direct menu landing or specific meal
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlMeal = urlParams.get('meal');
+  if (urlMeal && tabMenuBtn) {
+    tabMenuBtn.click();
+    setTimeout(() => {
+      const el = document.getElementById(`meal-card-${urlMeal}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.add('meal-card-targeted');
+      }
+    }, 150);
+  } else if (urlParams.get('tab') === 'menu' && tabMenuBtn) {
+    tabMenuBtn.click();
   }
 
   // Initial renders
@@ -338,22 +410,83 @@ function escapeHtml(str) {
 function initSettingsAndDrawer() {
   // Settings Modal
   const settingsBtn = document.getElementById('settings-toggle-btn');
-  const settingsModal = document.getElementById('settings-modal');
-  const settingsClose = document.getElementById('settings-close-btn');
-  const settingsBackdrop = document.getElementById('settings-backdrop');
-
-  if (settingsBtn && settingsModal) {
-    settingsBtn.addEventListener('click', () => {
-      settingsModal.style.display = 'block';
-    });
-  }
+  let settingsModal = document.getElementById('settings-modal');
 
   const closeSettings = () => {
     if (settingsModal) settingsModal.style.display = 'none';
   };
 
-  if (settingsClose) settingsClose.addEventListener('click', closeSettings);
-  if (settingsBackdrop) settingsBackdrop.addEventListener('click', closeSettings);
+  const bindSettingsCloseListeners = (modal) => {
+    if (!modal) return;
+    const closeBtn = modal.querySelector('#settings-close-btn');
+    const backdrop = modal.querySelector('#settings-backdrop');
+    if (closeBtn) closeBtn.onclick = closeSettings;
+    if (backdrop) backdrop.onclick = closeSettings;
+  };
+
+  const openSettings = () => {
+    if (!settingsModal) {
+      // Dynamic fallback if static #settings-modal is missing in DOM
+      let existingModal = document.getElementById('settings-modal');
+      if (existingModal) {
+        settingsModal = existingModal;
+      } else {
+        const modalEl = document.createElement('div');
+        modalEl.id = 'settings-modal';
+        modalEl.className = 'settings-modal';
+        modalEl.style.display = 'none';
+        modalEl.innerHTML = `
+          <div class="settings-backdrop" id="settings-backdrop"></div>
+          <div class="settings-dialog">
+            <div class="settings-header">
+              <h2 style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">Settings &amp; Info</h2>
+              <button id="settings-close-btn" class="settings-close-btn" type="button" aria-label="Close Settings">&times;</button>
+            </div>
+            <div class="settings-body">
+              <div class="setting-row">
+                <div>
+                  <p class="setting-title">Campus Hub</p>
+                  <p class="setting-sub">Lovely Professional University, Punjab</p>
+                </div>
+                <span class="setting-badge">Active</span>
+              </div>
+              <div class="setting-row">
+                <div>
+                  <p class="setting-title">Hostel Dining Schedule</p>
+                  <p class="setting-sub">Boys Hostel 14-Day Cycle</p>
+                </div>
+                <span class="setting-badge">Synced</span>
+              </div>
+              <div class="setting-links">
+                <a href="disclaimer.html" class="setting-link-btn">Legal Disclaimer &rarr;</a>
+                <a href="about.html" class="setting-link-btn">About MyLPU.online &rarr;</a>
+                <a href="contact.html" class="setting-link-btn">Contact / Submit Correction &rarr;</a>
+              </div>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modalEl);
+        settingsModal = modalEl;
+      }
+      bindSettingsCloseListeners(settingsModal);
+    }
+    settingsModal.style.display = 'block';
+  };
+
+  if (settingsBtn) {
+    settingsBtn.addEventListener('click', openSettings);
+  }
+
+  if (settingsModal) {
+    bindSettingsCloseListeners(settingsModal);
+  }
+
+  // Close modal on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && settingsModal && settingsModal.style.display === 'block') {
+      closeSettings();
+    }
+  });
 
   // Navigation Drawer
   const menuBtn = document.getElementById('menu-toggle-btn');
@@ -373,4 +506,22 @@ function initSettingsAndDrawer() {
 
   if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
   if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+}
+
+/* ==========================================================================
+   4. Back Button Navigation (Takes user one step back in history)
+   ========================================================================== */
+function initBackButton() {
+  const backButtons = document.querySelectorAll('#header-back-btn, .header-icon-btn[aria-label*="Back"], .header-icon-btn[aria-label*="back"]');
+  backButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // If history exists and not coming from outside origin, take one step back
+      if (window.history.length > 1 && (!document.referrer || document.referrer.includes(window.location.host))) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+  });
 }

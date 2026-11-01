@@ -1,24 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Primary Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Hostel Mess Schedules &amp; Food Menu — MyLPU.online</title>
-  <meta name="description" content="View verified hostel mess timings and real-time Boys Hostel daily food menu automatically synchronized to current day and meal time.">
-  <link rel="stylesheet" href="css/style.css">
+  <title>LPU Hostel Mess Timings &amp; Boys Hostel Food Menu — MyLPU.online</title>
+  <meta name="title" content="LPU Hostel Mess Timings &amp; Boys Hostel Food Menu — MyLPU.online">
+  <meta name="description" content="Verified Lovely Professional University (LPU) Boys Hostel daily food menu and mess schedules for Week 1 &amp; Week 2. Automatic day and serving time detection for Breakfast, Lunch, Snacks, and Dinner.">
+  <meta name="keywords" content="LPU mess menu, LPU hostel mess timing, LPU boys hostel mess menu, Lovely Professional University mess food list, LPU mess schedule 2026, LPU mess week 1 week 2 cycle, LPU Sunday mess timing, LPU BH1 BH2 BH3 BH4 BH5 BH6 BH7 BH8 BH9 BH10 mess menu, LPU mess breakfast lunch snacks dinner, LPU hostel food today">
+  <meta name="author" content="MyLPU.online">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mylpu.online/hostel-mess.html">
+
+  <!-- Google Search Console & Google AdSense Verification -->
+  <meta name="google-site-verification" content="ca-pub-3467220870074340">
+  <meta name="google-adsense-account" content="ca-pub-3467220870074340">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3467220870074340" crossorigin="anonymous"></script>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mylpu.online/hostel-mess.html">
+  <meta property="og:title" content="LPU Hostel Mess Timings &amp; Boys Hostel Food Menu — MyLPU.online">
+  <meta property="og:description" content="Verified Boys Hostel mess timings and real-time daily food menu automatically synchronized to current day and meal time at Lovely Professional University.">
+  <meta property="og:image" content="https://mylpu.online/assets/campus.png">
+  <meta property="og:site_name" content="MyLPU.online">
+
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mylpu.online/hostel-mess.html">
+  <meta property="twitter:title" content="LPU Hostel Mess Timings &amp; Boys Hostel Food Menu — MyLPU.online">
+  <meta property="twitter:description" content="Verified Boys Hostel mess timings and real-time daily food menu automatically synchronized to current day and meal time at Lovely Professional University.">
+  <meta property="twitter:image" content="https://mylpu.online/assets/campus.png">
+
+  <!-- Mobile & PWA Theme -->
+  <meta name="theme-color" content="#020B1B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3467220870074340"
-     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <!-- Header matching Screenshot 2 -->
   <header class="site-header-v2">
     <div class="header-container-v2">
-      <!-- Back Arrow to Home -->
-      <a href="index.html" class="header-icon-btn" aria-label="Back to Home">
+      <!-- Back Button (Takes one step back in history) -->
+      <button id="header-back-btn" class="header-icon-btn" type="button" aria-label="Go Back" onclick="if(window.history.length>1){window.history.back();}else{window.location.href='index.html';}">
         <img src="assets/icons/arrow-left.svg" alt="Back" width="18" height="18">
-      </a>
+      </button>
 
       <!-- Center Title -->
       <h1 class="header-page-title">
@@ -26,7 +55,7 @@
       </h1>
 
       <!-- Settings Button -->
-      <button id="settings-toggle-btn" class="header-icon-btn" type="button" aria-label="Settings">
+      <button id="settings-toggle-btn" class="header-icon-btn" type="button" aria-label="Settings" onclick="const m=document.getElementById('settings-modal');if(m)m.style.display='block';">
         <img src="assets/icons/settings.svg" alt="Settings" width="18" height="18">
       </button>
     </div>
@@ -50,7 +79,7 @@
     <section id="tab-content-timing" class="tab-content-section" style="display: block;">
       <div class="timing-list-v2">
         <!-- Breakfast -->
-        <div class="timing-item-card">
+        <div class="timing-item-card" data-meal-target="breakfast" role="button" tabindex="0" aria-label="View Breakfast Menu">
           <div class="timing-icon-frame-v2">
             <img src="assets/icons/sunrise.svg" alt="Breakfast" width="30" height="30">
           </div>
@@ -58,10 +87,11 @@
             <h3>Breakfast</h3>
             <p>07:30 AM – 09:30 AM</p>
           </div>
+          <img src="assets/icons/chevron-right.svg" alt="Go to menu" width="16" height="16" style="margin-left: auto; opacity: 0.6;">
         </div>
 
         <!-- Lunch -->
-        <div class="timing-item-card">
+        <div class="timing-item-card" data-meal-target="lunch" role="button" tabindex="0" aria-label="View Lunch Menu">
           <div class="timing-icon-frame-v2">
             <img src="assets/icons/fork-knife.svg" alt="Lunch" width="30" height="30">
           </div>
@@ -69,21 +99,23 @@
             <h3>Lunch</h3>
             <p>11:30 AM – 03:00 PM</p>
           </div>
+          <img src="assets/icons/chevron-right.svg" alt="Go to menu" width="16" height="16" style="margin-left: auto; opacity: 0.6;">
         </div>
        
         <!-- Snacks -->
-        <div class="timing-item-card">
+        <div class="timing-item-card" data-meal-target="snacks" role="button" tabindex="0" aria-label="View Evening Snacks Menu">
           <div class="timing-icon-frame-v2">
-            <img src="assets/icons/fork-knife.svg" alt="Lunch" width="30" height="30">
+            <img src="assets/icons/fork-knife.svg" alt="Snacks" width="30" height="30">
           </div>
           <div class="timing-item-info">
             <h3>Snacks</h3>
             <p>05:00 PM – 06:30 PM</p>
           </div>
+          <img src="assets/icons/chevron-right.svg" alt="Go to menu" width="16" height="16" style="margin-left: auto; opacity: 0.6;">
         </div>
 
         <!-- Dinner -->
-        <div class="timing-item-card">
+        <div class="timing-item-card" data-meal-target="dinner" role="button" tabindex="0" aria-label="View Dinner Menu">
           <div class="timing-icon-frame-v2">
             <img src="assets/icons/cloche.svg" alt="Dinner" width="30" height="30">
           </div>
@@ -91,6 +123,7 @@
             <h3>Dinner</h3>
             <p>07:30 PM – 09:30 PM</p>
           </div>
+          <img src="assets/icons/chevron-right.svg" alt="Go to menu" width="16" height="16" style="margin-left: auto; opacity: 0.6;">
         </div>
 
         <!-- Notice Card -->
@@ -101,50 +134,54 @@
           <div class="timing-notice-text">
             Timings vary slightly on Sundays and holidays.
           </div>
-          
         </div>
-                <!-- Breakfast -->
-        <div class="timing-item-card">
+
+        <!-- Sunday Breakfast -->
+        <div class="timing-item-card" data-meal-target="breakfast" role="button" tabindex="0" aria-label="View Sunday Breakfast Menu">
           <div class="timing-icon-frame-v2">
             <img src="assets/icons/sunrise.svg" alt="Breakfast" width="30" height="30">
           </div>
           <div class="timing-item-info">
-            <h3>Breakfast</h3>
-            <p>08:30 AM – 10:00 AM</p>
+            <h3>Breakfast (Sunday)</h3>
+            <p>08:00 AM – 10:00 AM</p>
           </div>
+          <img src="assets/icons/chevron-right.svg" alt="Go to menu" width="16" height="16" style="margin-left: auto; opacity: 0.6;">
         </div>
 
-        <!-- Lunch -->
-        <div class="timing-item-card">
+        <!-- Sunday Lunch -->
+        <div class="timing-item-card" data-meal-target="lunch" role="button" tabindex="0" aria-label="View Sunday Lunch Menu">
           <div class="timing-icon-frame-v2">
             <img src="assets/icons/fork-knife.svg" alt="Lunch" width="30" height="30">
           </div>
           <div class="timing-item-info">
-            <h3>Lunch</h3>
+            <h3>Lunch (Sunday)</h3>
             <p>12:30 PM – 03:00 PM</p>
           </div>
+          <img src="assets/icons/chevron-right.svg" alt="Go to menu" width="16" height="16" style="margin-left: auto; opacity: 0.6;">
         </div>
         
-        <!-- Snacks -->
-        <div class="timing-item-card">
+        <!-- Sunday Snacks -->
+        <div class="timing-item-card" data-meal-target="snacks" role="button" tabindex="0" aria-label="View Sunday Snacks Menu">
           <div class="timing-icon-frame-v2">
-            <img src="assets/icons/fork-knife.svg" alt="Lunch" width="30" height="30">
+            <img src="assets/icons/fork-knife.svg" alt="Snacks" width="30" height="30">
           </div>
           <div class="timing-item-info">
-            <h3>Snacks</h3>
+            <h3>Snacks (Sunday)</h3>
             <p>05:00 PM – 06:30 PM</p>
           </div>
+          <img src="assets/icons/chevron-right.svg" alt="Go to menu" width="16" height="16" style="margin-left: auto; opacity: 0.6;">
         </div>
 
-        <!-- Dinner -->
-        <div class="timing-item-card">
+        <!-- Sunday Dinner -->
+        <div class="timing-item-card" data-meal-target="dinner" role="button" tabindex="0" aria-label="View Sunday Dinner Menu">
           <div class="timing-icon-frame-v2">
             <img src="assets/icons/cloche.svg" alt="Dinner" width="30" height="30">
           </div>
           <div class="timing-item-info">
-            <h3>Dinner</h3>
+            <h3>Dinner (Sunday)</h3>
             <p>07:30 PM – 09:30 PM</p>
           </div>
+          <img src="assets/icons/chevron-right.svg" alt="Go to menu" width="16" height="16" style="margin-left: auto; opacity: 0.6;">
         </div>
 
       </div>
@@ -213,17 +250,17 @@
 
   <!-- Settings Modal Dialog -->
   <div id="settings-modal" class="settings-modal" style="display: none;">
-    <div class="settings-backdrop" id="settings-backdrop"></div>
+    <div class="settings-backdrop" id="settings-backdrop" onclick="document.getElementById('settings-modal').style.display='none';"></div>
     <div class="settings-dialog">
       <div class="settings-header">
         <h2 style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">Settings &amp; Info</h2>
-        <button id="settings-close-btn" class="settings-close-btn" type="button" aria-label="Close Settings">&times;</button>
+        <button id="settings-close-btn" class="settings-close-btn" type="button" aria-label="Close Settings" onclick="document.getElementById('settings-modal').style.display='none';">&times;</button>
       </div>
       <div class="settings-body">
         <div class="setting-row">
           <div>
             <p class="setting-title">Mess Dining Schedule</p>
-            <p class="setting-sub">Boys Hostel 14-Day Cycle</p>
+            <p class="setting-sub">Boys/Girls Hostel Menu Cycle</p>
           </div>
           <span class="setting-badge">Active</span>
         </div>
