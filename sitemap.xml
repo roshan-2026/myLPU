@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+       <loc>https://mylpu.online/</loc>
+       <lastmod>2026-11-01T17:06:14+00:00</lastmod>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://mylpu.online/index.html</loc>
+       <lastmod>2026-11-01T17:06:14+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://mylpu.online/hostel-mess.html</loc>
+       <lastmod>2026-11-01T17:06:14+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://mylpu.online/shops.html</loc>
+       <lastmod>2026-11-01T17:06:14+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://mylpu.online/disclaimer.html</loc>
+       <lastmod>2026-11-01T17:06:14+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://mylpu.online/about.html</loc>
+       <lastmod>2026-11-01T17:06:14+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://mylpu.online/contact.html</loc>
+       <lastmod>2026-11-01T17:06:14+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+</urlset>
