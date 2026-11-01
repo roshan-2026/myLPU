@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="840" viewBox="160 60 1200 840">
+  <title>MyLPU.online — Dark Mode Logo</title>
+  <desc>Dark navy logo with orange arch, white graduation cap, MyLPU.online wordmark, open book, and tagline.</desc>
+  <rect x="160" y="60" width="1200" height="840" fill="#020b1b"/>
+
+  <!-- Orange arch -->
+  <path d="M303 438 C390 204 559 84 769 84 C979 84 1148 204 1218 438"
+        fill="none" stroke="#ff7900" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- Graduation cap -->
+  <path d="M534 270 L770 175 L998 270 L770 348 Z" fill="#ffffff"/>
+  <path d="M641 323 L770 365 L890 323 L899 405 Q770 377 630 405 Z" fill="#ffffff"/>
+  <path d="M943 270 L943 382" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="943" cy="383" r="11" fill="#ffffff"/>
+  <path d="M935 393 Q923 429 932 447 Q943 453 954 447 Q963 429 951 393 Z" fill="#ffffff"/>
+
+  <!-- Wordmark -->
+  <g font-family="DejaVu Sans, Arial, sans-serif" font-style="italic" font-weight="bold" letter-spacing="-6">
+    <text x="197" y="605" font-size="184" fill="#ffffff">My</text>
+    <text x="491" y="605" font-size="184" fill="#ff7900">LPU</text>
+    <text x="858" y="605" font-size="166" fill="#ffffff" letter-spacing="-8">.online</text>
+  </g>
+
+  <!-- Open book -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M454 665 C568 627 678 637 768 726 C858 637 968 627 1082 665"
+          stroke="#ff7900" stroke-width="13"/>
+    <path d="M410 704 C548 660 675 671 768 758 C861 671 988 660 1126 704"
+          stroke="#ff7900" stroke-width="13"/>
+    <path d="M370 744 C527 704 674 709 768 781 C862 709 1009 704 1166 744"
+          stroke="#ffffff" stroke-width="13"/>
+    <path d="M768 726 L768 781" stroke="#ffffff" stroke-width="7"/>
+  </g>
+
+  <!-- Tagline -->
+  <text x="768" y="863" text-anchor="middle"
+        font-family="DejaVu Sans, Arial, sans-serif"
+        font-size="47" font-weight="bold" letter-spacing="9"
+        fill="#ffffff">ALL THINGS LPU, IN ONE PLACE</text>
+</svg>
