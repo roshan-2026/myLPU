@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>MyLPU.online — Your LPU Campus Companion</title>
+  <meta name="description" content="An independent student-created companion for Lovely Professional University. Explore hostel mess schedules, food menus, shops, and 3D campus navigation.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+</head>
+<body>
+
+  <!-- Header V2 matching Screenshot 2 -->
+  <header class="site-header-v2">
+    <div class="header-container-v2">
+      <!-- Hamburger Menu Button -->
+      <button id="menu-toggle-btn" class="header-icon-btn" type="button" aria-label="Open Navigation Menu">
+        <img src="assets/icons/menu.svg" alt="Menu" width="20" height="20">
+      </button>
+
+      <!-- Center Brand Logo -->
+      <a href="index.html" class="header-logo-center" aria-label="MyLPU.online Home">
+        <img src="assets/icons/logo.svg" alt="MyLPU.online Logo" class="header-center-logo">
+      </a>
+
+      <!-- Settings Button (Replaced Notification Button) -->
+      <button id="settings-toggle-btn" class="header-icon-btn" type="button" aria-label="Settings">
+        <img src="assets/icons/settings.svg" alt="Settings" width="20" height="20">
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-wrapper">
+    <!-- Welcome Greeting -->
+    <section class="greeting-section" aria-labelledby="dynamic-greeting">
+      <h1 id="dynamic-greeting" class="dynamic-greeting">
+        <span id="greeting-text">Good evening, Student</span>
+        <span class="wave-emoji" aria-hidden="true">👋</span>
+      </h1>
+      <p class="greeting-subtitle">Your LPU Campus Companion</p>
+    </section>
+
+    <!-- Campus Picture Hero Banner (Uploaded Image 3) -->
+    <div class="campus-hero-banner">
+      <img src="assets/campus.png" alt="LPU Campus Building">
+      <div class="campus-hero-overlay"></div>
+    </div>
+
+    <!-- Feature Cards Layout matching Screenshot 2 -->
+    <section class="feature-cards-v2" aria-label="Campus Primary Services">
+      <!-- CARD 1: HOSTEL MESS (Orange Glow Border) -->
+      <a href="hostel-mess.html" class="feature-card-item highlight-orange">
+        <div class="feature-card-left">
+          <div class="feature-card-badge orange-badge">
+            <img src="assets/icons/cloche.svg" alt="Mess Cloche" width="26" height="26">
+          </div>
+          <div class="feature-card-info">
+            <h2>Hostel Mess</h2>
+            <p>Timing &amp; Food Menu</p>
+          </div>
+        </div>
+        <div class="feature-card-arrow">
+          <img src="assets/icons/chevron-right.svg" alt="Go" width="18" height="18">
+        </div>
+      </a>
+
+      <!-- CARD 2: SHOPS & CAFETERIA -->
+      <a href="shops.html" class="feature-card-item">
+        <div class="feature-card-left">
+          <div class="feature-card-badge dark-badge">
+            <img src="assets/icons/store.svg" alt="Store Icon" width="26" height="26">
+          </div>
+          <div class="feature-card-info">
+            <h2>Shops &amp; Cafeteria</h2>
+            <p>Locations in Campus</p>
+          </div>
+        </div>
+        <div class="feature-card-arrow">
+          <img src="assets/icons/chevron-right.svg" alt="Go" width="18" height="18">
+        </div>
+      </a>
+    </section>
+
+    <!-- Bottom Disclaimer Section -->
+    <section class="bottom-disclaimer-box" aria-label="Disclaimer Notice">
+      <img src="assets/icons/shield.svg" alt="Disclaimer Icon" class="disclaimer-shield-icon" width="20" height="20">
+      <div class="disclaimer-text-content">
+        <p>
+          <strong>Disclaimer:</strong> This is an independent personal initiative and is NOT an official website of Lovely Professional University (LPU). It is not operated, endorsed or authorized by the university.
+        </p>
+        <a href="disclaimer.html" class="disclaimer-read-link">Read More &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="bottom-nav" aria-label="Mobile Bottom Navigation">
+    <a href="index.html" class="bottom-nav-item active">
+      <img src="assets/icons/home.svg" alt="Home" width="22" height="22">
+      <span>Home</span>
+    </a>
+    <a href="hostel-mess.html" class="bottom-nav-item">
+      <img src="assets/icons/utensils.svg" alt="Mess" width="22" height="22">
+      <span>Mess</span>
+    </a>
+    <a href="shops.html" class="bottom-nav-item">
+      <img src="assets/icons/store.svg" alt="Shops" width="22" height="22">
+      <span>Shops</span>
+    </a>
+  </nav>
+
+  <!-- Settings Modal Dialog -->
+  <div id="settings-modal" class="settings-modal" style="display: none;">
+    <div class="settings-backdrop" id="settings-backdrop"></div>
+    <div class="settings-dialog">
+      <div class="settings-header">
+        <h2 style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">Settings &amp; Info</h2>
+        <button id="settings-close-btn" class="settings-close-btn" type="button" aria-label="Close Settings">&times;</button>
+      </div>
+      <div class="settings-body">
+        <div class="setting-row">
+          <div>
+            <p class="setting-title">Campus Hub</p>
+            <p class="setting-sub">Lovely Professional University, Punjab</p>
+          </div>
+          <span class="setting-badge">Active</span>
+        </div>
+        <div class="setting-row">
+          <div>
+            <p class="setting-title">Hostel Dining Schedule</p>
+            <p class="setting-sub">Boys Hostel 14-Day Cycle</p>
+          </div>
+          <span class="setting-badge">Synced</span>
+        </div>
+        <div class="setting-links">
+          <a href="disclaimer.html" class="setting-link-btn">Legal Disclaimer Notice &rarr;</a>
+          <a href="about.html" class="setting-link-btn">About MyLPU.online Platform &rarr;</a>
+          <a href="contact.html" class="setting-link-btn">Contact / Submit Correction &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Drawer (Hamburger Menu) -->
+  <div id="nav-drawer" class="nav-drawer" style="display: none;">
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <img src="assets/icons/logo.svg" alt="MyLPU Logo" style="height: 38px;">
+        <button id="drawer-close-btn" class="settings-close-btn" type="button" aria-label="Close Menu">&times;</button>
+      </div>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link active">Home</a>
+        <a href="hostel-mess.html" class="drawer-link">Hostel Mess</a>
+        <a href="shops.html" class="drawer-link">Shops &amp; Cafeteria</a>
+        <a href="disclaimer.html" class="drawer-link">Disclaimer</a>
+        <a href="about.html" class="drawer-link">About Us</a>
+        <a href="contact.html" class="drawer-link">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2026 MyLPU.online • Student Campus Companion</p>
+      <div class="footer-nav">
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
